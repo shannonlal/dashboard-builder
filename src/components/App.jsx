@@ -10,7 +10,7 @@ class App extends React.Component {
   render() {
     return (
         <div>
-            {/**<Plot
+            <Plot
                 data={[
                 {
                     x: [1, 2, 3],
@@ -22,8 +22,8 @@ class App extends React.Component {
                 {type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
                 ]}
                 layout={{width: 320, height: 240, title: 'A Fancy Plot'}}
-            ></Plot> */}
-            <Dashboard />
+            ></Plot> 
+            {/*<Dashboard /> */}
       </div>
     );
   }
