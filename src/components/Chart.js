@@ -2,15 +2,12 @@ import React from 'react';
 import 'plotly.js';
 import Plot from 'react-plotly.js';
 
-
-import Dashboard from './Dashboard';
-import './App.scss';
-
-class App extends React.Component {
+class Chart extends React.Component {
   render() {
     return (
         <div>
-            {/*<Plot
+            <Plot
+                config= {{ displayModeBar: false }}
                 data={[
                 {
                     x: [1, 2, 3],
@@ -21,12 +18,11 @@ class App extends React.Component {
                 },
                 {type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
                 ]}
-                layout={{width: 320, height: 240, title: 'A Fancy Plot'}}
-            ></Plot> */}
-            <Dashboard /> 
+                layout={{width: 320, height: 240, title: 'A Fancy Plot'}}>
+            </Plot> 
       </div>
     );
   }
 }
 
-export default App;
+export default Chart;

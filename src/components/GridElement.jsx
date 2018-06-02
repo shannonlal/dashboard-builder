@@ -5,24 +5,15 @@ import PropTypes from 'prop-types';
 class DashElement extends React.Component {
 
     createGrid(){
-        return this.props.dataGrid;
+        return Object.assign({}, this.props.gridData);
     }
     render() {
         console.log( 'Grid Data', this.props.dataGrid);
+        console.log( 'Grid Data', this.props.label);
       return (
-          <div key={this.props.label} data-grid={this.createGrid()}>{this.props.label}</div>
+        <div  data-grid={this.props.dataGrid}>a</div>
       )
     }
   }
-
-  DashElement.propTypes = {
-    label: PropTypes.string,
-    dataGrid: PropTypes.shape({
-        x: PropTypes.number,
-        y: PropTypes.number,
-        w: PropTypes.number,
-        h: PropTypes.number
-    })
-  };
 
   export default DashElement;
