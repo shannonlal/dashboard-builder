@@ -1,11 +1,23 @@
 import React from 'react';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
+
+const customStyles = {
+    content : {
+      top                   : '50%',
+      left                  : '50%',
+      right                 : 'auto',
+      bottom                : 'auto',
+      marginRight           : '-50%',
+      transform             : 'translate(-50%, -50%)'
+    }
+  };
+
 class GridElementSelector extends React.Component {
   render() {
     return (
         <Modal
-          isOpen={this.props.modalIsOpen}
+          isOpen={this.props.isOpen}
           onAfterOpen={this.props.afterOpenModal}
           onRequestClose={this.props.closeModal}
           style={customStyles}
@@ -13,7 +25,7 @@ class GridElementSelector extends React.Component {
         >
  
           <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
-          <button onClick={this.closeModal}>close</button>
+          <button onClick={this.props.closeModal}>close</button>
           <div>I am a modal</div>
           <form>
             <input />
@@ -30,6 +42,7 @@ class GridElementSelector extends React.Component {
 GridElementSelector.propTypes = {
     afterOpenModal: PropTypes.func,
     closeModal: PropTypes.func,
+    isOpen: PropTypes.bool
 
 };
 

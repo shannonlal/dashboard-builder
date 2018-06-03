@@ -3,6 +3,8 @@ import { WidthProvider, Responsive } from "react-grid-layout";
 import _ from "lodash";
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 import './grid.scss';
+import GridElementSelector from '../src/components/GridElementSelector';
+import {IMAGES} from '../src/images/';
 
 /**
  * This layout demonstrates how to use a grid with a dynamic number of elements.
@@ -12,7 +14,8 @@ class EditGridLayout extends React.PureComponent {
     className: "layout",
     cols: { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 },
     rowHeight: 100,
-    onLayoutChange: function(){}
+    onLayoutChange: function(){},
+    modalIsOpen: false
   };
 
   constructor(props) {
@@ -34,6 +37,7 @@ class EditGridLayout extends React.PureComponent {
 
     this.onAddItem = this.onAddItem.bind(this);
     this.onBreakpointChange = this.onBreakpointChange.bind(this);
+    this.closeModal = this.closeModal.bind( this );
   }
 
   createElement(el) {
@@ -55,7 +59,7 @@ class EditGridLayout extends React.PureComponent {
             Add +
           </span>
         ) : (
-          <span className="text basic-grid-item">{i}</span>
+          <span className="text basic-grid-item">{i+1}</span>
         )}
         <span
           className="remove"
@@ -81,7 +85,8 @@ class EditGridLayout extends React.PureComponent {
         h: 2
       }),
       // Increment the counter to ensure key is always unique.
-      newCounter: this.state.newCounter + 1
+      newCounter: this.state.newCounter + 1,
+      modalIsOpen:true
     });
   }
 
@@ -103,10 +108,16 @@ class EditGridLayout extends React.PureComponent {
     this.setState({ items: _.reject(this.state.items, { i: i }) });
   }
 
+  closeModal(){
+      console.log( 'Current Object', this);
+      this.setState({modalIsOpen:false});
+  }
+
   render() {
     return (
       <div>
         <button onClick={this.onAddItem}>Add Item</button>
+        <GridElementSelector isOpen={this.state.modalIsOpen} closeModal={this.closeModal}/>
         <ResponsiveReactGridLayout
           onLayoutChange={this.onLayoutChange}
           onBreakpointChange={this.onBreakpointChange}
