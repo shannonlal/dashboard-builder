@@ -1,11 +1,11 @@
 const IMAGES = {
-    0: 'beach.jpeg',
-    1: 'birds.jpg',
-    2: 'forest.jpeg',
-    3: 'london.jpeg',
-    4: 'mountains.jpeg',
-    5: 'newyork.jpeg',
-    6: 'paris.jpeg'
+    0: './images/beach.jpeg',
+    1: './images/birds.jpg',
+    2: './images/forest.jpeg',
+    3: './images/london.jpeg',
+    4: './images/mountains.jpeg',
+    5: './images/newyork.jpeg',
+    6: './images/paris.jpeg'
 };
 
 module.exports = {

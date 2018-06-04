@@ -39,6 +39,10 @@ class EditGridLayout extends React.PureComponent {
     this.onBreakpointChange = this.onBreakpointChange.bind(this);
     this.closeModal = this.closeModal.bind( this );
   }
+  getImage( index ){
+
+    return IMAGES[index];
+  }
 
   createElement(el) {
     const removeStyle = {
@@ -59,7 +63,9 @@ class EditGridLayout extends React.PureComponent {
             Add +
           </span>
         ) : (
-          <span className="text basic-grid-item">{i+1}</span>
+          <span className="text basic-grid-item">
+            <img className="grid-image" src={this.getImage( i )} alt="Paris" />
+          </span>
         )}
         <span
           className="remove"
