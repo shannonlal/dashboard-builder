@@ -19,13 +19,13 @@ class GridElementSelector extends React.Component {
         <Modal
           isOpen={this.props.isOpen}
           onAfterOpen={this.props.afterOpenModal}
-          onRequestClose={this.props.closeModal}
+          onRequestClose={this.props.addItem}
           style={customStyles}
           contentLabel="Example Modal"
         >
  
           <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
-          <button onClick={this.props.closeModal}>close</button>
+          <button onClick={this.props.addItem}>close</button>
           <div>I am a modal</div>
           <form>
             <input />

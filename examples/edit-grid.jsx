@@ -21,6 +21,12 @@ class EditGridLayout extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    function shouldAdd( i, l ){
+      
+      let rst =  (i === (l.length - 1).toString());
+      console.log( 'Should add', rst);
+      return rst;
+    }
     this.state = {
       items: [0, 1, 2, 3, 4].map(function(i, key, list) {
         return {
@@ -29,10 +35,11 @@ class EditGridLayout extends React.PureComponent {
           y: 0,
           w: 2,
           h: 2,
-          add: i === (list.length - 1).toString()
+          add: shouldAdd( i, list)
         };
       }),
-      newCounter: 0
+      newCounter: 0,
+      nextIndex: 5
     };
 
     this.onAddItem = this.onAddItem.bind(this);
@@ -40,7 +47,7 @@ class EditGridLayout extends React.PureComponent {
     this.closeModal = this.closeModal.bind( this );
   }
   getImage( index ){
-
+    console.log( 'Getting image for ', index);
     return IMAGES[index];
   }
 
@@ -80,7 +87,6 @@ class EditGridLayout extends React.PureComponent {
 
   onAddItem() {
     /*eslint no-console: 0*/
-    console.log("adding", "n" + this.state.newCounter);
     this.setState({
       // Add a new item. It must have a unique key!
       items: this.state.items.concat({
@@ -115,7 +121,6 @@ class EditGridLayout extends React.PureComponent {
   }
 
   closeModal(){
-      console.log( 'Current Object', this);
       this.setState({modalIsOpen:false});
   }
 

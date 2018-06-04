@@ -12,7 +12,9 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height:24px;
+    display:flex;
+    height: 90%;
+    width: 90%;
 }
 
 .grid-label{
@@ -23,6 +25,6 @@
 }
 
 .grid-image{
-    max-width: 100%;
+    width: 100%;
     height: auto;
 }
