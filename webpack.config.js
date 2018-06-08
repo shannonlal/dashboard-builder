@@ -32,6 +32,10 @@ module.exports = {
           loaders: ['style', 'css', 'postcss', 'sass']
       },
       {
+        test: /\.css$/,
+        loaders: ['style', 'css', 'postcss', 'sass']
+    },
+      {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [
             'url-loader?limit=100000',

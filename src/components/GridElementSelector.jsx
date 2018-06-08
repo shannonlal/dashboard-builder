@@ -1,6 +1,8 @@
 import React from 'react';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
+import ImagePicker from 'react-image-picker';
+import 'react-image-picker/dist/index.css';
 
 const customStyles = {
     content : {
@@ -13,7 +15,21 @@ const customStyles = {
     }
   };
 
+  //import images from local
+import img1 from '../images/beach.jpeg';
+import img2 from '../images/birds.jpg';
+import img3 from '../images/forest.jpeg';
+import img4 from '../images/london.jpeg';
+import img5 from '../images/mountains.jpeg';
+import img6 from '../images/newyork.jpeg';
+import img7 from '../images/paris.jpeg';
+ 
+const imageList = [img1, img2, img3, img4,img5,img6,img7];
+
 class GridElementSelector extends React.Component {
+  onPick(image) {
+    console.log( 'Image picked', image);
+  }
   render() {
     return (
         <Modal
@@ -26,14 +42,13 @@ class GridElementSelector extends React.Component {
  
           <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
           <button onClick={this.props.addItem}>close</button>
-          <div>I am a modal</div>
-          <form>
-            <input />
-            <button>tab navigation</button>
-            <button>stays</button>
-            <button>inside</button>
-            <button>the modal</button>
-          </form>
+          <div>
+            <ImagePicker 
+              images={imageList.map((image, i) => ({src: image, value: i}))}
+              onPick={this.onPick}
+            />
+            {/*<button type="button" onClick={() => console.log(this.state.image)}>OK</button> */}
+          </div>
         </Modal>
     );
   }
