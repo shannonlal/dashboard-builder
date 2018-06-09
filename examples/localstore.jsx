@@ -33,6 +33,7 @@ class LocalStorageLayout extends React.PureComponent {
 
   onLayoutChange(layout) {
     /*eslint no-console: 0*/
+    console.log( 'Layout ', layout);
     saveToLS("layout", layout);
     this.setState({ layout });
     this.props.onLayoutChange(layout); // updates status display

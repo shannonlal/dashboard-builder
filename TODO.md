@@ -1,5 +1,6 @@
 1. Logic for adding the images.  Center the image (Marie-Eve)
-
+1a. Load the selected image back on to dashboard
+1b. Load that into state
 
 2. Saving information to local storage Example
 3. Menu

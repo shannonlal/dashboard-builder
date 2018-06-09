@@ -36,6 +36,7 @@ class Dashboard extends React.Component {
             newCounter: originalList.length
 
           };
+        this.onLayoutChange = this.onLayoutChange.bind(this);
     }
 
     // We're using the cols coming back from this to calculate where to add new items.
@@ -47,6 +48,7 @@ class Dashboard extends React.Component {
     }
 
     onLayoutChange(layout) {
+        console.log( 'Layout change', layout);
         this.props.onLayoutChange(layout);
         this.setState({ layout: layout });
     }

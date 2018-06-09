@@ -6,6 +6,7 @@ import Plot from 'react-plotly.js';
 import Dashboard from './Dashboard';
 import BasicDashboard from '../../examples/basic-01';
 import EditDashboard from '../../examples/edit-grid';
+import LocalStorageLayout from '../../examples/localstore';
 import './App.scss';
 
 class App extends React.Component {
@@ -14,6 +15,7 @@ class App extends React.Component {
         <div>
 
             <Dashboard /> 
+            {/*<LocalStorageLayout />*/} 
       </div>
     );
   }
