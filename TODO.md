@@ -1,9 +1,9 @@
 1. Logic for adding the images.  Center the image 
-1a. Load that into state
+1a.Rebuilding from local storage
 1b. Load the selected image back on to dashboard
+1c. Rebuilding from local storage
 
 
-2. Saving information to local storage Example
 3. Menu
 -Data Sources
 -Variables
