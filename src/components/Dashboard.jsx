@@ -1,7 +1,10 @@
 import React from 'react';
-import { WidthProvider, Responsive } from "react-grid-layout";
 import _ from "lodash";
-const ResponsiveReactGridLayout = WidthProvider(Responsive);
+
+
+import RGL, { WidthProvider } from "react-grid-layout";
+
+const ReactGridLayout = WidthProvider(RGL);
 import GridLayout from 'react-grid-layout';
 import DashElement from './DashElement';
 import Chart from './Chart';
@@ -13,14 +16,13 @@ class Dashboard extends React.Component {
 
     static defaultProps = {
         className: "layout",
-        cols: { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 },
         rowHeight: 100,
+        cols:5,
         onLayoutChange: function(){},
         modalIsOpen: false
     };
     constructor( props ){
         super(props)
-        this.onBreakpointChange = this.onBreakpointChange.bind(this);
         this.onRemoveItem = this.onRemoveItem.bind( this );
         const originalList = [0];
         this.state = {
@@ -33,21 +35,27 @@ class Dashboard extends React.Component {
                 h: 2
               };
             }),
-            newCounter: originalList.length
+            newCounter: originalList.length,
+            layout:[]
 
           };
         this.onLayoutChange = this.onLayoutChange.bind(this);
+
+        
     }
 
     // We're using the cols coming back from this to calculate where to add new items.
-    onBreakpointChange(breakpoint, cols) {
+    /*onBreakpointChange(breakpoint, cols) {
+      console.log( 'Breakpont chagne', breakpoint);
+      console.log( 'Cols', cols);
         this.setState({
             breakpoint: breakpoint,
             cols: cols
         });
-    }
+    }*/
 
     onLayoutChange(layout) {
+      debugger;
         console.log( 'Layout change', layout);
         this.props.onLayoutChange(layout);
         this.setState({ layout: layout });
@@ -91,14 +99,15 @@ class Dashboard extends React.Component {
       return (
         <div>
           <button onClick={this.displayModal.bind(this)}>Add Item</button>
-          <GridElementSelector isOpen={this.state.modalIsOpen} addItem={this.addItem.bind(this)}/>
-          <ResponsiveReactGridLayout
-            onLayoutChange={this.onLayoutChange}
-            onBreakpointChange={this.onBreakpointChange}
-            {...this.props}
-          >
-            {_.map(this.state.items, el => this.createElement(el))}
-          </ResponsiveReactGridLayout>
+          <GridElementSelector isOpen={this.state.modalIsOpen} 
+              addItem={this.addItem.bind(this)}/>
+              <ReactGridLayout
+                onLayoutChange={this.onLayoutChange}
+                {...this.props}
+                layout={this.state.layout}
+              >
+                {_.map(this.state.items, el => this.createElement(el))}
+              </ReactGridLayout>
         </div>
         
       )
