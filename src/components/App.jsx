@@ -8,6 +8,7 @@ import BasicDashboard from '../../examples/basic-01';
 import EditDashboard from '../../examples/edit-grid';
 import LocalStorageLayout from '../../examples/localstore';
 import ImageGrid from '../../examples/image-grid'
+import ResponsiveLocalStorageLayout from '../../examples/responsive-localstorage';
 import './App.scss';
 
 class App extends React.Component {

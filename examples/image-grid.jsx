@@ -3,7 +3,7 @@ import { WidthProvider, Responsive } from "react-grid-layout";
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 const originalLayouts = getFromLS("layouts") || {};
-let originalList = getItemsLS() || [0];
+let originalList = getItemsLS() || [0]
 import DashElement from '../src/components/DashElement';
 import GridElementSelector from '../src/components/GridElementSelector';
 
@@ -146,6 +146,7 @@ function getFromLS(key) {
   if (global.localStorage) {
     try {
       ls = JSON.parse(global.localStorage.getItem("rgl-8")) || {};
+      console.log( 'Got from storage', ls);
     } catch (e) {
       /*Ignore*/
     }
@@ -161,6 +162,7 @@ function getItemsLS(key) {
       debugger;
 
       ls = JSON.parse(items) || [0];
+      console.log( 'Items',ls);
     } catch (e) {
       /*Ignore*/
       return [0];

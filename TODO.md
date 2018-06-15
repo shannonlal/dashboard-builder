@@ -1,7 +1,8 @@
-1. Logic for adding the images.  Center the image 
+
 1a.Rebuilding from local storage
 1b. Load the selected image back on to dashboard
 1c. Rebuilding from local storage
+2. Replace Chart with Image
 
 
 3. Menu
