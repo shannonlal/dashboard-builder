@@ -1,8 +1,8 @@
 
-1a.Rebuilding from local storage
-1b. Load the selected image back on to dashboard
-1c. Rebuilding from local storage
 2. Replace Chart with Image
+2a. Create Simple Line Chart
+2b. Create Bar Chart
+2c. Create Pie Chart
 
 
 3. Menu

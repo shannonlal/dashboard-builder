@@ -29,8 +29,10 @@ const imageList = [img1, img2, img3, img4,img5,img6,img7];
 class GridElementSelector extends React.Component {
   onPick(image) {
     console.log( 'Image picked', image);
+    this.props.addItem(image.value);
   }
   render() {
+    //<button onClick={this.props.addItem}>close</button> -->
     return (
         <Modal
           isOpen={this.props.isOpen}
@@ -41,11 +43,11 @@ class GridElementSelector extends React.Component {
         >
  
           <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
-          <button onClick={this.props.addItem}>close</button>
+          
           <div>
             <ImagePicker 
               images={imageList.map((image, i) => ({src: image, value: i}))}
-              onPick={this.onPick}
+              onPick={this.onPick.bind(this)}
             />
             {/*<button type="button" onClick={() => console.log(this.state.image)}>OK</button> */}
           </div>

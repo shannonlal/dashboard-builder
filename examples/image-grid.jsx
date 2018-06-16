@@ -3,7 +3,8 @@ import { WidthProvider, Responsive } from "react-grid-layout";
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 const originalLayouts = getFromLS("layouts") || {};
-let originalList = getItemsLS() || [0]
+let originalList = getItemsLS();
+
 import DashElement from '../src/components/DashElement';
 import GridElementSelector from '../src/components/GridElementSelector';
 
@@ -16,17 +17,25 @@ class ImageGrid extends React.PureComponent {
     this.onRemoveItem = this.onRemoveItem.bind( this );
     this.saveToLS = this.saveToLS.bind(this);
     console.log( 'items', originalList);
-    this.state = {
-      layouts: JSON.parse(JSON.stringify(originalLayouts)),
-      items: originalList.map(function(i, key, list) {
+    let items;
+    if( typeof originalList === "undefined"){
+      originalList = [0];
+      items = originalList.map(function(i, key, list) {
         return {
           i: i.toString(),
           x: i * 2,
           y: 0,
           w: 2,
-          h: 2
+          h: 2,
+          imageIndex:i
         };
-      }),
+      })
+    }else{
+      items = originalList
+    }
+    this.state = {
+      layouts: JSON.parse(JSON.stringify(originalLayouts)),
+      items: items,
       newCounter: originalList.length
     };
   }
@@ -43,14 +52,16 @@ class ImageGrid extends React.PureComponent {
     this.setState({ layouts: {} });
   }
 
-  addItem() {
+  addItem( imageIndex ) {
+    console.log( 'Image Index', imageIndex);
     /*eslint no-console: 0*/
     let items = this.state.items.concat({
       i: this.state.newCounter.toString(),
       x: (this.state.items.length * 2) % (this.state.cols || 12),
       y: Infinity, // puts it at the bottom
       w: 2,
-      h: 2
+      h: 2,
+      imageIndex
     });
     this.setState({
       // Add a new item. It must have a unique key!
@@ -59,15 +70,11 @@ class ImageGrid extends React.PureComponent {
       newCounter: this.state.newCounter + 1,
       modalIsOpen:false
     });
-    console.log( 'Saving to Storage', items);
     this.saveItemsToLS(items);
-    debugger;
 
 }
 
   onLayoutChange(layout, layouts) {
-    console.log( 'Changing layout ', layout);
-    console.log( 'Changing layouts ', layouts);
     this.saveToLS("layouts", layouts);
     this.setState({ layouts });
   }
@@ -87,13 +94,12 @@ class ImageGrid extends React.PureComponent {
     const i = el.add ? "+" : el.i;
     return (
       <div key={i} data-grid={el} className="basic-grid">
-        <DashElement onRemoveItem={this.onRemoveItem} index={i} />
+        <DashElement onRemoveItem={this.onRemoveItem} index={i} imageIndex={el.imageIndex}/>
       </div>
     );
   }
   
   saveToLS(key, value) {
-    console.log( 'Saving to storage', key);
     if (global.localStorage) {
       global.localStorage.setItem(
         "rgl-8",
@@ -106,10 +112,21 @@ class ImageGrid extends React.PureComponent {
 
   saveItemsToLS(value) {
     console.log( 'Saving items to storage', value);
+
+    /**
+     * Function for parsing Infinity into string instead of null
+     * since Infinity is not valid JSON
+     */   
+    function censor(key, value) {
+      if (value == Infinity) {
+        return "Infinity";
+      }
+      return value;
+    }
     if (global.localStorage) {
       global.localStorage.setItem(
         "items",
-        JSON.stringify(value)
+        JSON.stringify(value, censor)
       );
     }
   }
@@ -146,7 +163,6 @@ function getFromLS(key) {
   if (global.localStorage) {
     try {
       ls = JSON.parse(global.localStorage.getItem("rgl-8")) || {};
-      console.log( 'Got from storage', ls);
     } catch (e) {
       /*Ignore*/
     }
@@ -155,17 +171,20 @@ function getFromLS(key) {
 }
 
 function getItemsLS(key) {
-  let ls = {};
+  let ls;
   if (global.localStorage) {
     try {
       let items = global.localStorage.getItem("items");
-      debugger;
-
-      ls = JSON.parse(items) || [0];
-      console.log( 'Items',ls);
+      function convertInfinity (key, value) {
+        return value === "Infinity"  ? Infinity : value;
+      }
+      ls = JSON.parse(items, convertInfinity);
+      if( typeof ls === undefined || ls === null){
+        return;
+      }
     } catch (e) {
       /*Ignore*/
-      return [0];
+      return;
     }
   }
   return ls;

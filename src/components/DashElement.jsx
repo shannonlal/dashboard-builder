@@ -27,7 +27,7 @@ class DashElement extends React.Component {
       return (
         <div>
           <span className="text basic-grid-item">
-              <img className="grid-image" src={this.getImage( this.props.index )} alt="Paris" />
+              <img className="grid-image" src={this.getImage( this.props.imageIndex )} alt="Paris" />
             </span>
             <span
               className="remove"
