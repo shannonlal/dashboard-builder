@@ -1,9 +1,21 @@
 import React from 'react';
 import 'plotly.js';
 import Plot from 'react-plotly.js';
+//import sizeMe from 'react-sizeme';
+const INITIAL_SIZE = 300;
 
-class Chart extends React.Component {
-  render() {
+function Chart(props) {
+    console.log( 'Chart Props', props);
+
+    
+    let height =  props.height;
+    /*if( height === 0){
+        height = INITIAL_SIZE;
+    }*/
+    let width = props.width;
+    /*if( width === 0){
+        width = INITIAL_SIZE;
+    }*/
     return (
         <div>
             <Plot
@@ -18,11 +30,11 @@ class Chart extends React.Component {
                 },
                 {type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
                 ]}
-                layout={{width: 240, height: 300, title: 'A Fancy Plot'}}>
+                layout={{width: width, height: height, title: 'A Fancy Plot'}}>
             </Plot> 
       </div>
     );
-  }
+
 }
 
 export default Chart;
