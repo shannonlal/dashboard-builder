@@ -2,20 +2,20 @@ import React from 'react';
 import 'plotly.js';
 import Plot from 'react-plotly.js';
 //import sizeMe from 'react-sizeme';
-const INITIAL_SIZE = 300;
+const INITIAL_SIZE = 50;
 
 function Chart(props) {
     console.log( 'Chart Props', props);
 
     
     let height =  props.height;
-    /*if( height === 0){
+    if( height === 0){
         height = INITIAL_SIZE;
-    }*/
+    }
     let width = props.width;
-    /*if( width === 0){
+    if( width === 0){
         width = INITIAL_SIZE;
-    }*/
+    }
     return (
         <div>
             <Plot

@@ -92,9 +92,11 @@ class ImageGrid extends React.PureComponent {
   createElement(el) {
 
     const i = el.add ? "+" : el.i;
+    let divId =`MainGrid-${i}`;
+    console.log( 'DIV ID', divId);
     return (
-      <div key={i} data-grid={el} className="basic-grid">
-        <DashElement onRemoveItem={this.onRemoveItem} index={i} imageIndex={el.imageIndex}/>
+      <div key={i} id={divId} data-grid={el} className="basic-grid">
+        <DashElement onRemoveItem={this.onRemoveItem} index={i} imageIndex={el.imageIndex} divId={divId}/>
       </div>
     );
   }

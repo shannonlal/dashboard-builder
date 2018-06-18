@@ -1,5 +1,8 @@
 
+1a. Fix issue adding with error
+1b. Center the charts
 2. Replace Chart with Image
+
 2a. Create Simple Line Chart
 2b. Create Bar Chart
 2c. Create Pie Chart

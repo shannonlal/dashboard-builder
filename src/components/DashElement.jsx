@@ -4,15 +4,25 @@ import {IMAGES} from '../images/';
 import Chart from './Chart';
 import sizeMe from 'react-sizeme';
 import SizeComponent from './SizeComponent';
+const INITIAL_SIZE = 50;
+function DashElement ({imageIndex, index, onRemoveItem, divId}){
 
-  function DashElement ({imageIndex, index, onRemoveItem,size}){
-    const height = size.height;
-    const width = size.width;
-    console.log( 'Dash Element size', size);
+    let elem = document.getElementById(divId), height, width;
+
+    if( elem ){
+      width = elem.offsetWidth;
+      height = elem.offsetHeight;
+    }else{
+      width = INITIAL_SIZE;
+      height = INITIAL_SIZE;
+    }
+    console.log( `Dash Element width ${width}, height ${height} `);
 
 
     const getImage = function( index ){
+      console.log( 'Getting images', index);
       let img = IMAGES[index];
+      console.log( 'image', img);
       if( !img ){
         return IMAGES[0];
       }
@@ -27,8 +37,9 @@ import SizeComponent from './SizeComponent';
     };
 
     return (
-      <div>
+      <div id="MainGrid">
         <span className="text basic-grid-item">
+            {/*<img className="grid-image" src={getImage( imageIndex )} alt="Paris" /> */}
             <Chart height={height} width={width} />
           </span>
           <span
@@ -38,6 +49,7 @@ import SizeComponent from './SizeComponent';
           >
             x
         </span> 
+        {/*<Chart /> */} 
       </div>
     )
   }

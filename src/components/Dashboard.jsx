@@ -84,9 +84,10 @@ class Dashboard extends React.Component {
     createElement(el) {
 
         const i = el.add ? "+" : el.i;
+        let divId =`MainGrid=${1}`;
         return (
-          <div key={i} data-grid={el} className="basic-grid">
-            <DashElement onRemoveItem={this.onRemoveItem} index={i} />
+          <div key={i} id={divId} data-grid={el} className="basic-grid">
+            <DashElement onRemoveItem={this.onRemoveItem} index={i} divId={divId} />
           </div>
         );
       }
