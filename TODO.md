@@ -1,6 +1,8 @@
 
-1a. Fix issue adding with error
-1b. Center the charts
+1. Add Different Types
+1a. Labels
+1b. Constants Label
+1c. Chart
 2. Replace Chart with Image
 
 2a. Create Simple Line Chart

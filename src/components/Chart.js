@@ -5,7 +5,7 @@ import Plot from 'react-plotly.js';
 const INITIAL_SIZE = 50;
 
 function Chart(props) {
-    console.log( 'Chart Props', props);
+    //console.log( 'Chart Props', props);
 
     
     let height =  props.height;

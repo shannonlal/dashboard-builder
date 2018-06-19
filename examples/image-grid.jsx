@@ -7,6 +7,8 @@ let originalList = getItemsLS();
 
 import DashElement from '../src/components/DashElement';
 import GridElementSelector from '../src/components/GridElementSelector';
+import Label from '../src/components/Label';
+//console.log( 'Label', Label);
 
 /**
  * This layout demonstrates how to sync multiple responsive layouts to localstorage.
@@ -52,8 +54,11 @@ class ImageGrid extends React.PureComponent {
     this.setState({ layouts: {} });
   }
 
-  addItem( imageIndex ) {
+  addItem( imageIndex, elementType ) {
     console.log( 'Image Index', imageIndex);
+    if( typeof elementType === undefined){
+      elementType = 'Chart'
+    }
     /*eslint no-console: 0*/
     let items = this.state.items.concat({
       i: this.state.newCounter.toString(),
@@ -61,7 +66,8 @@ class ImageGrid extends React.PureComponent {
       y: Infinity, // puts it at the bottom
       w: 2,
       h: 2,
-      imageIndex
+      imageIndex, 
+      elementType
     });
     this.setState({
       // Add a new item. It must have a unique key!
@@ -93,10 +99,12 @@ class ImageGrid extends React.PureComponent {
 
     const i = el.add ? "+" : el.i;
     let divId =`MainGrid-${i}`;
-    console.log( 'DIV ID', divId);
+    //console.log( 'DIV ID', divId);
     return (
       <div key={i} id={divId} data-grid={el} className="basic-grid">
-        <DashElement onRemoveItem={this.onRemoveItem} index={i} imageIndex={el.imageIndex} divId={divId}/>
+        <DashElement onRemoveItem={this.onRemoveItem} index={i} 
+                      imageIndex={el.imageIndex} divId={divId}
+                      elementType={el.elementType}/>
       </div>
     );
   }
@@ -138,6 +146,7 @@ class ImageGrid extends React.PureComponent {
       <div>
         <button onClick={() => this.resetLayout()}>Reset Layout</button>
         <button onClick={this.displayModal.bind(this)}>Add Item</button>
+        <Label label="Hello"></Label>
         <GridElementSelector isOpen={this.state.modalIsOpen} 
               addItem={this.addItem.bind(this)}/>
         <ResponsiveReactGridLayout

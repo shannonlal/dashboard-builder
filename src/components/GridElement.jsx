@@ -4,10 +4,10 @@ import Chart from './Chart';
 
 
 function GridElement(props){
-    console.log( 'Size Component',props);
+    //console.log( 'Size Component',props);
     const height = size.height;
     const width = size.width;
-    console.log( `Size Component Height ${height} width ${width}`);
+    //console.log( `Size Component Height ${height} width ${width}`);
 
     /*if( height > 300 ){
         return <div>Tall</div>

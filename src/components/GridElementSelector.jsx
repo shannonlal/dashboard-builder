@@ -16,20 +16,21 @@ const customStyles = {
   };
 
   //import images from local
-import img1 from '../images/beach.jpeg';
-import img2 from '../images/birds.jpg';
-import img3 from '../images/forest.jpeg';
+import chart from '../images/plotly-logo.png';
+import title from '../images/title.png';
+import count from '../images/count.png';
 import img4 from '../images/london.jpeg';
 import img5 from '../images/mountains.jpeg';
 import img6 from '../images/newyork.jpeg';
 import img7 from '../images/paris.jpeg';
  
-const imageList = [img1, img2, img3, img4,img5,img6,img7];
+const imageList = [
+  {image:chart, value:'CHART'},{image:title, value:'LABEL'},{image:count, value:'COUNT'}];
 
 class GridElementSelector extends React.Component {
   onPick(image) {
     console.log( 'Image picked', image);
-    this.props.addItem(image.value);
+    this.props.addItem(image.value,image.value );
   }
   render() {
     //<button onClick={this.props.addItem}>close</button> -->
@@ -46,7 +47,7 @@ class GridElementSelector extends React.Component {
           
           <div>
             <ImagePicker 
-              images={imageList.map((image, i) => ({src: image, value: i}))}
+              images={imageList.map((image, i) => ({src: image.image, value: image.value}))}
               onPick={this.onPick.bind(this)}
             />
             {/*<button type="button" onClick={() => console.log(this.state.image)}>OK</button> */}

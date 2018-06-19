@@ -4,8 +4,9 @@ import {IMAGES} from '../images/';
 import Chart from './Chart';
 import sizeMe from 'react-sizeme';
 import SizeComponent from './SizeComponent';
+import Label from './Label';
 const INITIAL_SIZE = 50;
-function DashElement ({imageIndex, index, onRemoveItem, divId}){
+function DashElement ({imageIndex, index, onRemoveItem, divId, elementType, label}){
 
     let elem = document.getElementById(divId), height, width;
 
@@ -16,7 +17,7 @@ function DashElement ({imageIndex, index, onRemoveItem, divId}){
       width = INITIAL_SIZE;
       height = INITIAL_SIZE;
     }
-    console.log( `Dash Element width ${width}, height ${height} `);
+    //console.log( `Dash Element width ${width}, height ${height} `);
 
 
     const getImage = function( index ){
@@ -36,11 +37,19 @@ function DashElement ({imageIndex, index, onRemoveItem, divId}){
       cursor: "pointer"
     };
 
+    const getElement= function( elementType, h, w, label ) {
+      if( elementType === 'Label'){
+        return (<Label label={label} />)
+      }else{
+        return (<Chart height={h} width={w} />)
+      }
+    }
+
     return (
       <div id="MainGrid">
         <span className="text basic-grid-item">
             {/*<img className="grid-image" src={getImage( imageIndex )} alt="Paris" /> */}
-            <Chart height={height} width={width} />
+            {getElement( elementType, height, width, label)}
           </span>
           <span
             className="remove"
