@@ -5,6 +5,7 @@ import Chart from './Chart';
 import sizeMe from 'react-sizeme';
 import SizeComponent from './SizeComponent';
 import Label from './Label';
+import Count from './Count';
 const INITIAL_SIZE = 50;
 function DashElement ({imageIndex, index, onRemoveItem, divId, elementType, label}){
 
@@ -42,6 +43,8 @@ function DashElement ({imageIndex, index, onRemoveItem, divId, elementType, labe
       if( elementType === 'LABEL'){
         console.log( `Got Label ${label}`);
         return (<Label label={label} />)
+      }else if( elementType === 'COUNT'){
+        return ( <Count />)
       }else{
         return (<Chart height={h} width={w} />)
       }
