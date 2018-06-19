@@ -30,7 +30,11 @@ const imageList = [
 class GridElementSelector extends React.Component {
   onPick(image) {
     console.log( 'Image picked', image);
-    this.props.addItem(image.value,image.value );
+    let props = {};
+    if( image.value === 'LABEL'){
+      props.label = 'Test Label';
+    }
+    this.props.addItem(image.value,image.value, props );
   }
   render() {
     //<button onClick={this.props.addItem}>close</button> -->

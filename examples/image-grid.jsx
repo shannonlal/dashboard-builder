@@ -54,8 +54,8 @@ class ImageGrid extends React.PureComponent {
     this.setState({ layouts: {} });
   }
 
-  addItem( imageIndex, elementType ) {
-    console.log( 'Image Index', imageIndex);
+  addItem( imageIndex, elementType, props ) {
+    console.log( `Image Index ${imageIndex} ${elementType}`);
     if( typeof elementType === undefined){
       elementType = 'Chart'
     }
@@ -67,7 +67,8 @@ class ImageGrid extends React.PureComponent {
       w: 2,
       h: 2,
       imageIndex, 
-      elementType
+      elementType,
+      label:props.label
     });
     this.setState({
       // Add a new item. It must have a unique key!
@@ -99,12 +100,12 @@ class ImageGrid extends React.PureComponent {
 
     const i = el.add ? "+" : el.i;
     let divId =`MainGrid-${i}`;
-    //console.log( 'DIV ID', divId);
+    console.log( 'Create Element', el);
     return (
       <div key={i} id={divId} data-grid={el} className="basic-grid">
         <DashElement onRemoveItem={this.onRemoveItem} index={i} 
                       imageIndex={el.imageIndex} divId={divId}
-                      elementType={el.elementType}/>
+                      elementType={el.elementType} label={el.label}/>
       </div>
     );
   }
@@ -146,7 +147,6 @@ class ImageGrid extends React.PureComponent {
       <div>
         <button onClick={() => this.resetLayout()}>Reset Layout</button>
         <button onClick={this.displayModal.bind(this)}>Add Item</button>
-        <Label label="Hello"></Label>
         <GridElementSelector isOpen={this.state.modalIsOpen} 
               addItem={this.addItem.bind(this)}/>
         <ResponsiveReactGridLayout

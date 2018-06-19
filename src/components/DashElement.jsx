@@ -38,7 +38,9 @@ function DashElement ({imageIndex, index, onRemoveItem, divId, elementType, labe
     };
 
     const getElement= function( elementType, h, w, label ) {
-      if( elementType === 'Label'){
+      console.log( `Get Element ${elementType}`);
+      if( elementType === 'LABEL'){
+        console.log( `Got Label ${label}`);
         return (<Label label={label} />)
       }else{
         return (<Chart height={h} width={w} />)
