@@ -1,10 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-
-
-function Label(props){
-
-    return (<div className="label-style">{props.label}</div>)
+/**
+ * The core label which can be added to the dashboard.  Note
+ * this component uses CSS Variables to set the style on the label
+ *
+ * @version 1.0.0
+ * @author [Shannon Lal](https://github.com/shannonlal)
+ */
+function Label({label}){
+    return (<div className="label-style">{label}</div>)
 }
 
+Label.propTypes = {
+    //The label to be displayed on the dashboad
+    label: PropTypes.string.isRequired
+};
 export default Label;

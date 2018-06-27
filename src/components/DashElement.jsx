@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Chart from './Chart';
 import sizeMe from 'react-sizeme';
 import {ELEMENT_TYPES} from '../common';
-
 import Label from './Label';
 import Count from './Count';
 const INITIAL_SIZE = 50;
@@ -45,7 +44,7 @@ function DashElement ({index, onRemoveItem, divId, elementType, label}){
     }
 
     return (
-      <div id="MainGrid">
+      <div>
         <span className="text basic-grid-item">
             {getElement( elementType, height, width, label)}
           </span>
