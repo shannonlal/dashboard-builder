@@ -8,6 +8,13 @@ import Label from './Label';
 import Count from './Count';
 const INITIAL_SIZE = 50;
 
+const removeStyle = {
+  position: "absolute",
+  right: "2px",
+  top: 0,
+  cursor: "pointer"
+};
+
 /**
  * The core DashElement
  *
@@ -25,13 +32,6 @@ function DashElement ({index, onRemoveItem, divId, elementType, label}){
       width = INITIAL_SIZE;
       height = INITIAL_SIZE;
     }
-
-    const removeStyle = {
-      position: "absolute",
-      right: "2px",
-      top: 0,
-      cursor: "pointer"
-    };
 
     const getElement= function( elementType, h, w, label ) {
       if( elementType === ELEMENT_TYPES.LABEL){

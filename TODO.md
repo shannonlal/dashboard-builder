@@ -1,5 +1,6 @@
 
 1. Integrate
+a. - DashElement - Define Prototype and Shape object to be passed in
 a. Define Items to link to Plotly Plot,label, external component
 b. Define Interface
 c. Define structure
