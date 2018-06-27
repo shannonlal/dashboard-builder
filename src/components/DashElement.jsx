@@ -1,13 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {IMAGES} from '../images/';
 import Chart from './Chart';
 import sizeMe from 'react-sizeme';
-import SizeComponent from './SizeComponent';
+import {ELEMENT_TYPES} from '../common';
+
 import Label from './Label';
 import Count from './Count';
 const INITIAL_SIZE = 50;
-function DashElement ({imageIndex, index, onRemoveItem, divId, elementType, label}){
+
+/**
+ * The core DashElement
+ *
+ * @version 1.0.0
+ * @author [Shannon Lal](https://github.com/shannonlal)
+ */
+function DashElement ({index, onRemoveItem, divId, elementType, label}){
 
     let elem = document.getElementById(divId), height, width;
 
@@ -18,18 +25,6 @@ function DashElement ({imageIndex, index, onRemoveItem, divId, elementType, labe
       width = INITIAL_SIZE;
       height = INITIAL_SIZE;
     }
-    //console.log( `Dash Element width ${width}, height ${height} `);
-
-
-    const getImage = function( index ){
-      console.log( 'Getting images', index);
-      let img = IMAGES[index];
-      console.log( 'image', img);
-      if( !img ){
-        return IMAGES[0];
-      }
-      return img;
-    }
 
     const removeStyle = {
       position: "absolute",
@@ -39,11 +34,10 @@ function DashElement ({imageIndex, index, onRemoveItem, divId, elementType, labe
     };
 
     const getElement= function( elementType, h, w, label ) {
-      console.log( `Get Element ${elementType}`);
-      if( elementType === 'LABEL'){
-        console.log( `Got Label ${label}`);
+      if( elementType === ELEMENT_TYPES.LABEL){
+
         return (<Label label={label} />)
-      }else if( elementType === 'COUNT'){
+      }else if( elementType === ELEMENT_TYPES.STAT){
         return ( <Count />)
       }else{
         return (<Chart height={h} width={w} />)
@@ -53,7 +47,6 @@ function DashElement ({imageIndex, index, onRemoveItem, divId, elementType, labe
     return (
       <div id="MainGrid">
         <span className="text basic-grid-item">
-            {/*<img className="grid-image" src={getImage( imageIndex )} alt="Paris" /> */}
             {getElement( elementType, height, width, label)}
           </span>
           <span
@@ -63,10 +56,15 @@ function DashElement ({imageIndex, index, onRemoveItem, divId, elementType, labe
           >
             x
         </span> 
-        {/*<Chart /> */} 
       </div>
     )
   }
 
+
+  DashElement.propTypes = {
+    divId: PropTypes.string.isRequired,
+    elementType: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired
+  };
 
   export default sizeMe({monitorHeight:true,monitorWidth: true})(DashElement);

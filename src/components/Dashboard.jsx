@@ -5,10 +5,7 @@ import _ from "lodash";
 import RGL, { WidthProvider } from "react-grid-layout";
 
 const ReactGridLayout = WidthProvider(RGL);
-import GridLayout from 'react-grid-layout';
 import DashElement from './DashElement';
-import Chart from './Chart';
-import {IMAGES} from '../images/';
 import GridElementSelector from './GridElementSelector';
 
 
@@ -43,16 +40,6 @@ class Dashboard extends React.Component {
 
         
     }
-
-    // We're using the cols coming back from this to calculate where to add new items.
-    /*onBreakpointChange(breakpoint, cols) {
-      console.log( 'Breakpont chagne', breakpoint);
-      console.log( 'Cols', cols);
-        this.setState({
-            breakpoint: breakpoint,
-            cols: cols
-        });
-    }*/
 
     onLayoutChange(layout) {
       debugger;
