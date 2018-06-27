@@ -1,13 +1,23 @@
 
-1. Add Different Types
-1a. Labels
-1b. Constants Label
-1c. Chart
-2. Replace Chart with Image
+1. Integrate
+a. Define Items to link to Plotly Plot,label, external component
+b. Define Interface
+c. Define structure
 
-2a. Create Simple Line Chart
-2b. Create Bar Chart
-2c. Create Pie Chart
+Design
+1. Dashboard
+- Contains Layout props
+- List of items
+
+2. Controller Interface
+ - Save
+ - Add Item
+ - Remove Item
+ - Get Items
+
+
+3. CSS Variables
+
 
 
 3. Menu
