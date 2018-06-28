@@ -13,3 +13,14 @@ The following is an example of how to customize it
     font-size: 24px;
 };
 ```
+
+## Count
+The Count Component has one main style ('count-style') that is attached to the div
+The following is an example of how to customize it
+
+```css
+.count-style{
+    text-align: center;
+    font-size: 24px;
+};
+```
