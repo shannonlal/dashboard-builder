@@ -3,8 +3,9 @@ import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import ImagePicker from 'react-image-picker';
 import 'react-image-picker/dist/index.css';
+import {ELEMENT_TYPES} from '../common';
 
-const customStyles = {
+const modalStyles = {
     content : {
       top                   : '50%',
       left                  : '50%',
@@ -19,42 +20,38 @@ const customStyles = {
 import chart from '../images/plotly-logo.png';
 import title from '../images/title.png';
 import count from '../images/count.png';
-import img4 from '../images/london.jpeg';
-import img5 from '../images/mountains.jpeg';
-import img6 from '../images/newyork.jpeg';
-import img7 from '../images/paris.jpeg';
+
  
 const imageList = [
-  {image:chart, value:'CHART'},{image:title, value:'LABEL'},{image:count, value:'COUNT'}];
+  {image:chart, value:ELEMENT_TYPES.CHART},{image:title, value:ELEMENT_TYPES.LABEL},{image:count, value:ELEMENT_TYPES.STAT}];
 
 class GridElementSelector extends React.Component {
   onPick(image) {
-    console.log( 'Image picked', image);
     let props = {};
-    if( image.value === 'LABEL'){
-      props.label = 'Test Label';
+    if( image.value === ELEMENT_TYPES.LABEL){
+      props.label = `Test Label${parseInt(Math.random()*10)}`;
+    }else if( image.value === ELEMENT_TYPES.STAT){
+      props.count = parseInt(Math.random()*100);
     }
     this.props.addItem(image.value,image.value, props );
   }
   render() {
-    //<button onClick={this.props.addItem}>close</button> -->
     return (
         <Modal
           isOpen={this.props.isOpen}
           onAfterOpen={this.props.afterOpenModal}
           onRequestClose={this.props.addItem}
-          style={customStyles}
+          style={modalStyles}
           contentLabel="Example Modal"
         >
  
-          <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
+          <h2 ref={subtitle => this.subtitle = subtitle}>Select Component to Add</h2>
           
           <div>
             <ImagePicker 
               images={imageList.map((image, i) => ({src: image.image, value: image.value}))}
               onPick={this.onPick.bind(this)}
             />
-            {/*<button type="button" onClick={() => console.log(this.state.image)}>OK</button> */}
           </div>
         </Modal>
     );

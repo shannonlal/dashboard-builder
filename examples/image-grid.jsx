@@ -68,7 +68,8 @@ class ImageGrid extends React.PureComponent {
       h: 2,
       imageIndex, 
       elementType,
-      label:props.label
+      label:props.label,
+      count: props.count
     });
     this.setState({
       // Add a new item. It must have a unique key!
@@ -100,12 +101,13 @@ class ImageGrid extends React.PureComponent {
 
     const i = el.add ? "+" : el.i;
     let divId =`MainGrid-${i}`;
-    console.log( 'Create Element', el);
+    //console.log( 'Create Element', el);
     return (
       <div key={i} id={divId} data-grid={el} className="basic-grid">
         <DashElement onRemoveItem={this.onRemoveItem} index={i} 
                       imageIndex={el.imageIndex} divId={divId}
-                      elementType={el.elementType} label={el.label}/>
+                      elementType={el.elementType} label={el.label}
+                      count={el.count}/>
       </div>
     );
   }

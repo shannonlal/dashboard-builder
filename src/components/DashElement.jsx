@@ -16,12 +16,12 @@ const removeStyle = {
 
 /**
  * The core DashElement
+ * TODO. Define shape for this element
  *
  * @version 1.0.0
  * @author [Shannon Lal](https://github.com/shannonlal)
  */
-function DashElement ({index, onRemoveItem, divId, elementType, label}){
-
+function DashElement ({index, onRemoveItem, divId, elementType, label, count}){
     let elem = document.getElementById(divId), height, width;
 
     if( elem ){
@@ -34,10 +34,9 @@ function DashElement ({index, onRemoveItem, divId, elementType, label}){
 
     const getElement= function( elementType, h, w, label ) {
       if( elementType === ELEMENT_TYPES.LABEL){
-
         return (<Label label={label} />)
       }else if( elementType === ELEMENT_TYPES.STAT){
-        return ( <Count />)
+        return ( <Count count={count}/>)
       }else{
         return (<Chart height={h} width={w} />)
       }
@@ -63,7 +62,8 @@ function DashElement ({index, onRemoveItem, divId, elementType, label}){
   DashElement.propTypes = {
     divId: PropTypes.string.isRequired,
     elementType: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired
+    label: PropTypes.string,
+    count: PropTypes.number
   };
 
   export default sizeMe({monitorHeight:true,monitorWidth: true})(DashElement);
