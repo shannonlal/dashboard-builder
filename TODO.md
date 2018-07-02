@@ -1,7 +1,7 @@
 
 TODO
 1. Clean up Chart -- Done
-2. Clean up GridElementSelector
+2. Clean up GridElementSelector -- Done
 3. Clean up Dashboard
 4. Modify index.js file for export
 5. Make examples - React folder with sub project
