@@ -58,8 +58,9 @@ function DashElement ({index, onRemoveItem, divId, elementType, label, count}){
     )
   }
 
-
   DashElement.propTypes = {
+    index: PropTypes.number.isRequired,
+    onRemoveItem: PropTypes.func.isRequired,
     divId: PropTypes.string.isRequired,
     elementType: PropTypes.string.isRequired,
     label: PropTypes.string,
