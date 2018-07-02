@@ -9,9 +9,7 @@ import PropTypes from 'prop-types';
  * @author [Shannon Lal](https://github.com/shannonlal)
  */
 function Label({label}){
-    console.log( 'Check in latest', label);
     if( typeof label !=='undefined'){
-        console.log( 'Returning label', label);
         return (<div className="label-style">{label}</div>)
     }
 }
