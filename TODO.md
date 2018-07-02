@@ -1,4 +1,17 @@
 
+TODO
+1. Clean up Chart -- Done
+2. Clean up GridElementSelector
+3. Clean up Dashboard
+4. Modify index.js file for export
+5. Make examples - React folder with sub project
+6. Move App.jsx to examples directory
+7. Define Datasources Component
+8. Define Query Component
+9. Query Result
+10. Link Query Result to Charts
+
+
 1. Integrate
 a. - DashElement - Define Prototype and Shape object to be passed in
 a. Define Items to link to Plotly Plot,label, external component

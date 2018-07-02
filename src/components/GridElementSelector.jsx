@@ -16,15 +16,16 @@ const modalStyles = {
     }
   };
 
-  //import images from local
 import chart from '../images/plotly-logo.png';
 import title from '../images/title.png';
 import count from '../images/count.png';
 
- 
-const imageList = [
-  {image:chart, value:ELEMENT_TYPES.CHART},{image:title, value:ELEMENT_TYPES.LABEL},{image:count, value:ELEMENT_TYPES.STAT}];
+const IMAGE_LIST = [
+  {image:chart, value:ELEMENT_TYPES.CHART},
+  {image:title, value:ELEMENT_TYPES.LABEL},
+  {image:count, value:ELEMENT_TYPES.STAT}];
 
+const SELECT_LABEL = 'Select Component to Add';  
 class GridElementSelector extends React.Component {
   onPick(image) {
     let props = {};
@@ -42,14 +43,11 @@ class GridElementSelector extends React.Component {
           onAfterOpen={this.props.afterOpenModal}
           onRequestClose={this.props.addItem}
           style={modalStyles}
-          contentLabel="Example Modal"
         >
- 
-          <h2 ref={subtitle => this.subtitle = subtitle}>Select Component to Add</h2>
-          
+          <h2 ref={subtitle => this.subtitle = subtitle}>{SELECT_LABEL}</h2>
           <div>
             <ImagePicker 
-              images={imageList.map((image, i) => ({src: image.image, value: image.value}))}
+              images={IMAGE_LIST.map((image, i) => ({src: image.image, value: image.value}))}
               onPick={this.onPick.bind(this)}
             />
           </div>
@@ -62,8 +60,6 @@ GridElementSelector.propTypes = {
     afterOpenModal: PropTypes.func,
     closeModal: PropTypes.func,
     isOpen: PropTypes.bool
-
 };
-
 
 export default GridElementSelector;
