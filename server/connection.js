@@ -21,6 +21,21 @@ const connect = function( params ){
     return client;
 };
 
+const parseKnexSQL = function( resp ){
+
+    let rows = [];
+    let columnNames = [];
+    if( typeof resp !== 'undefined' && typeof resp.rows !== 'undefined' && resp.fields !== 'undefined'){
+
+        columnNames = resp.fields.map( field => {
+            return {name: field.name, type: field.format};
+        })
+        rows = resp.rows;
+    }
+    return {columnNames, rows};
+
+}
+
 /**
  * The following method will open a connection to the provided datasource
  * and execute a query
@@ -42,8 +57,7 @@ const query = function(params){
             
             let resp = yield client.raw( params.query.sql, params.query.params);
 
-            //TODO implement the parsing
-            return resp;
+            return parseKnexSQL( resp );
         }catch( err ){
              //logger.error(`Unexpected error query ${err}`);
              console.log( 'error',err);
