@@ -21,6 +21,14 @@ const connect = function( params ){
     return client;
 };
 
+/**
+ * The following method will extra the key elements from a knex sql 
+ * response
+ * @param {object} resp 
+ * @param {array} resp.fields
+ * @param {array} resp.rows
+ * @return {columnNames, rows}
+ */
 const parseKnexSQL = function( resp ){
 
     let rows = [];
