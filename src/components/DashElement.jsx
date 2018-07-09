@@ -5,6 +5,7 @@ import sizeMe from 'react-sizeme';
 import {ELEMENT_TYPES} from '../common';
 import Label from './Label';
 import Count from './Count';
+import Table from './Table';
 const INITIAL_SIZE = 50;
 
 const removeStyle = {
@@ -37,6 +38,9 @@ function DashElement ({index, onRemoveItem, divId, elementType, label, count}){
         return (<Label label={label} />)
       }else if( elementType === ELEMENT_TYPES.STAT){
         return ( <Count count={count}/>)
+      }else if( elementType === ELEMENT_TYPES.TABLE){
+        console.log( 'Table Selected');
+        return (<Table height={h} width={w} />)
       }else{
         return (<Chart height={h} width={w} />)
       }
@@ -59,7 +63,7 @@ function DashElement ({index, onRemoveItem, divId, elementType, label, count}){
   }
 
   DashElement.propTypes = {
-    index: PropTypes.number.isRequired,
+    index: PropTypes.string.isRequired,
     onRemoveItem: PropTypes.func.isRequired,
     divId: PropTypes.string.isRequired,
     elementType: PropTypes.string.isRequired,

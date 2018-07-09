@@ -19,11 +19,14 @@ const modalStyles = {
 import chart from '../images/plotly-logo.png';
 import title from '../images/title.png';
 import count from '../images/count.png';
+import table from '../images/table.png';
 
 const IMAGE_LIST = [
   {image:chart, value:ELEMENT_TYPES.CHART},
   {image:title, value:ELEMENT_TYPES.LABEL},
-  {image:count, value:ELEMENT_TYPES.STAT}];
+  {image:count, value:ELEMENT_TYPES.STAT},
+  {image:table, value:ELEMENT_TYPES.TABLE}
+];
 
 const SELECT_LABEL = 'Select Component to Add';  
 class GridElementSelector extends React.Component {
@@ -43,6 +46,7 @@ class GridElementSelector extends React.Component {
           onAfterOpen={this.props.afterOpenModal}
           onRequestClose={this.props.addItem}
           style={modalStyles}
+          contentLabel="Element Selection"
         >
           <h2 ref={subtitle => this.subtitle = subtitle}>{SELECT_LABEL}</h2>
           <div>

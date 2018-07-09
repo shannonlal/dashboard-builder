@@ -32,6 +32,21 @@ const INITIAL_SIZE = 50;
  */
 function Chart(props) {
 
+    //TODO Replace
+    /*props.data = [
+        {
+            x: [1, 2, 3],
+            y: [2, 6, 3],
+            type: 'scatter',
+            mode: 'lines+points',
+            marker: {color: 'red'},
+        },
+        {type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
+        ];*/
+
+   //props.config = { displayModeBar: false };
+    //props.layout = {width: width, height: height, title: 'A Fancy Plot'};
+
     let height =  props.height;
     if( typeof height === 'undefined' || height === 0  ){
         height = INITIAL_SIZE;
@@ -40,25 +55,40 @@ function Chart(props) {
     if( typeof width === 'undefined' || width === 0){
         width = INITIAL_SIZE;
     }
-    let layout = props.layout;
-    layout.width = width;
-    layout.height = height;
+    //let layout = props.layout;
+    //layout.width = width;
+    //layout.height = height;
     return (
         <div>
-            <Plot
+            {/**<Plot
                 config={props.config}
                 data={prop.data}
                 layout={layout}>
-            </Plot> 
+            </Plot> */}
+
+            <Plot onfig= {{ displayModeBar: false }}
+                data={[
+                {
+                    x: [1, 2, 3],
+                    y: [2, 6, 3],
+                    type: 'scatter',
+                    mode: 'lines+points',
+                    marker: {color: 'red'},
+                },
+                {type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
+                ]}
+                layout={{width: width, height: height, title: 'A Fancy Plot'}}>
+            </Plot>
+
       </div>
     );
 }
 
 Chart.propTypes = {
     //The label to be displayed on the dashboad
-    config: PropTypes.object.isRequired,
+    /*config: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
-    layout: PropTypes.object.isRequired,
+    layout: PropTypes.object.isRequired,*/
     height: PropTypes.number.isRequired,
     width: PropTypes.number.isRequired
 };
