@@ -46,7 +46,6 @@ function Table({width, height}){
                 showPagination={false}
                 showPageSizeOptions={false}
                 className="-striped -highlight"
-                min-width=""
                 loading={false}
         />)
 }

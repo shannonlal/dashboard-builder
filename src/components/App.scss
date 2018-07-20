@@ -10,4 +10,29 @@ body {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
     font-weight: 300;
     font-size: 14px;
-  }
+}
+
+
+/**
+* The following cover the header settings for 
+*/
+table{
+    width:100%;
+}
+.small-table-header{
+    font-size:15px;
+    border: 0.75px solid black;
+    text-align: center;    
+}
+
+.medium-table-header{
+    font-size:20px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.large-table-header{
+    font-size:24px;
+    border: 1.25px solid black;
+    text-align: center;
+}

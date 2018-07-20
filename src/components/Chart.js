@@ -66,7 +66,7 @@ function Chart(props) {
                 layout={layout}>
             </Plot> */}
 
-            <Plot onfig= {{ displayModeBar: false }}
+            <Plot config= {{ displayModeBar: false }}
                 data={[
                 {
                     x: [1, 2, 3],

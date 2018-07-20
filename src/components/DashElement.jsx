@@ -5,7 +5,7 @@ import sizeMe from 'react-sizeme';
 import {ELEMENT_TYPES} from '../common';
 import Label from './Label';
 import Count from './Count';
-import Table from './Table';
+import Table from './table/index';
 const INITIAL_SIZE = 50;
 
 const removeStyle = {
