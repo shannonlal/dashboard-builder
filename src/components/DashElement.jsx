@@ -22,7 +22,7 @@ const removeStyle = {
  * @version 1.0.0
  * @author [Shannon Lal](https://github.com/shannonlal)
  */
-function DashElement ({index, onRemoveItem, divId, elementType, label, count}){
+function DashElement ({index, onRemoveItem, divId, elementType, label, count, columnNames, rows}){
     let elem = document.getElementById(divId), height, width;
 
     if( elem ){

@@ -1,8 +1,12 @@
+NEED HELP WITH
+1. Scale of Table to be sized correctly
+2. Add the header
 
 TODO
 1. Clean up Chart -- Done
 2. Clean up GridElementSelector -- Done
-3. Clean up Dashboard
+3. Clean up Dashboard - Done
+3a. Create Server to generate dynamic data
 4. Modify index.js file for export
 5. Make examples - React folder with sub project
 6. Move App.jsx to examples directory

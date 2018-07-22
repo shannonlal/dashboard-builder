@@ -38,23 +38,26 @@ const query = function( serverUrl,connection ){
  * @param {array} requests - Contains request information
  * @param {object} requests.connection - See query function definition for connection
  * @param {string} requests.name - The name of the request
+ * @param {function} updateResults
  */
-const requestManager = function( serverUrl, interval, requests ){
+const requestManager = function( serverUrl, interval, requests, updateResults ){
 
+    debugger;
     function executeRequests(){
-
+        debugger;
         let promises = requests.map( request =>{
             return query(serverUrl, request.connection);
         } );
 
         Promise.all( promises ).then( values =>{
             console.log( 'Requests', values);
+            updateResults(values[0]);
         }).catch( err =>{
             console.error('Unexpected Error getting data', err);
         });
     }
 
-    return setInterval( interval, executeRequests);
+    return setInterval(executeRequests,  interval);
 }
 
 module.exports = {

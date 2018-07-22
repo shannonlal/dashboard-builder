@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from './Header';
 import Row from './Row';
+import {  Post } from 'react-axios';
 
 
 /**
@@ -12,10 +13,7 @@ import Row from './Row';
  */
 
 
-function Table({width, height}){
-
-    let columnNames = ['alchol', 'location'];
-    let rows = [{'alchol':'12.1', 'location':'Canada'},{'alchol':'13.5', 'location':'US'},{'alchol':'14.1', 'location':'U.K'},{'alchol':'15.1', 'location':'AUS'},{'alchol':'13.1', 'location':'Japan'},{'alchol':'12.1', 'location':'China'}]
+function Table({width, height, columnNames, rows}){
 
     //https://css-tricks.com/fitting-text-to-a-container/
     const tableHeight = {
@@ -29,11 +27,11 @@ function Table({width, height}){
             <div className="tablecontainer" style={tableHeight}>
                 <table>
                     <Header columnNames={columnNames} width={width} height={height} />
-                        {   
-                            rows.map( (row,index) =>{
-                                return(<Row key={index} columnNames={columnNames} row={row} width={width}/>)
-                            })
-                        }
+                    {   
+                        rows.map( (row,index) =>{
+                            return(<Row key={index} columnNames={columnNames} row={row} width={width}/>)
+                        })
+                    }
                 </table>
 
         </div>

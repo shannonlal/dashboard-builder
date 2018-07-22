@@ -61,11 +61,37 @@ const parseKnexSQL = function( resp ){
 const query = function(params){
     return co(function*() {
         try{
-            let client = connect( params );
+            /*let client = connect( params );
             
             let resp = yield client.raw( params.query.sql, params.query.params);
 
-            return parseKnexSQL( resp );
+            return parseKnexSQL( resp );*/
+            return mockData();
+        }catch( err ){
+             //logger.error(`Unexpected error query ${err}`);
+             console.log( 'error',err);
+             throw err;
+        }
+ 
+    });
+}
+
+/**
+ * The following function will return the 
+ */
+const mockData = function(){
+
+    const columnNames = ['alchol', 'location'];
+    let rows = [{'location':'Canada'},{'location':'US'},{'location':'U.K'},{'location':'AUS'},{'location':'Japan'},{ 'location':'China'}];
+
+    return co(function*() {
+        try{
+            rows = rows.map( row =>{
+                row.alchol = parseFloat(Number(Math.random()*100).toFixed(2));
+                return row;
+            });
+                
+            return {columnNames,rows};
         }catch( err ){
              //logger.error(`Unexpected error query ${err}`);
              console.log( 'error',err);
