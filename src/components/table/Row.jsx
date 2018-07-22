@@ -8,28 +8,26 @@ import {getHeaderTextStyles,getColumnWidth} from './common';
  * @version 1.0.0
  * @author [Shannon Lal](https://github.com/shannonlal)
  */
-function Header({columnNames,width}){
+function Row({columnNames,row, width}){
 
     let textSize = getHeaderTextStyles( width );
     const columnStyle={
         width: getColumnWidth(columnNames, width)
     }
 
-    return (
-        <div className="headercontainer">
-            <thead>
+    return (<thead>
                 <tr>
-                    {columnNames.map( header =>{
-                        return (<th className={textSize} style={columnStyle}>{header}</th>)
+                    {columnNames.map( (column,index) =>{
+                        return (<td key={index} className={textSize} style={columnStyle}>{row[column]}</td>)
                     })}    
                 </tr>
             </thead>
-        </div>
     )
 }
 
-Header.propTypes = {
+Row.propTypes = {
     columnNames: PropTypes.array.isRequired,
+    rows: PropTypes.array.isRequired,
     width: PropTypes.number.isRequired
 };
-export default Header;
+export default Row;
