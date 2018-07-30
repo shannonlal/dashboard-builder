@@ -37,22 +37,36 @@ class App extends React.Component {
 
     this.updateResults = this.updateResults.bind(this);
     this.setState({results:{}})
-    let requestInterval = requestManager( 'http://localhost:3000/', 3000, requests, this.updateResults);
+    let requestInterval;
+
+  }
+
+  componentDidMount(){
+    this.requestInterval = requestManager( 'http://localhost:3000/', 3000, requests, this.updateResults);
   }
 
   updateResults(results){
+    debugger;
     this.setState( {results:results})
   }
 
   render() {
-    console.log( 'Results from requests', this.state.results);
-    return (
+
+    if( this.state && this.state.results ){
+      console.log( 'Results from requests', this.state.results);
+      return (
         <div>
             <ImageGrid columnNames={this.state.results.columnNames} rows={this.state.results.rows} />
             {/**<Dashboard /> **/}
             {/**<LocalStorageLayout /> */}
       </div>
     );
+    }else{
+      return (
+        <div>Loading...</div>
+      )
+    }
+
   }
 }
 

@@ -2,15 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from './Header';
 import Row from './Row';
-import {  Post } from 'react-axios';
-
-
+import 'whatwg-fetch';
 /**
  * The following is the header component that will be render for the table
  *
  * @version 1.0.0
  * @author [Shannon Lal](https://github.com/shannonlal)
  */
+
+function loadData(){
+    return fetch(`http://localhost:3000`,{
+        method: 'POST',
+        body: {},
+        headers: {
+          'Content-Type':'application/json'
+        }
+      }).then( (response) =>{
+        return response.json();
+      });
+}
 
 class Table extends React.Component{
 
@@ -22,13 +32,23 @@ class Table extends React.Component{
                 columnNames:[], rows:[]});
     }
 
+    componentWillMount(){
+        /*loadData().then( rst =>{
+            console.log(`Data received ${rst}`);
+        }).catch( err =>{
+            console.error(`Error ${err}`);
+        });*/
+    }
+
+
+
     render(){
         //https://css-tricks.com/fitting-text-to-a-container/
         const tableHeight = {
             height:(this.state.height - 50)
         };
 
-        console.log( `Table Container Height ${height}`);
+        console.log( `Table Container Height ${this.state.height}`);
                 /*<div className="headercontainer" > **/
         return ( 
 

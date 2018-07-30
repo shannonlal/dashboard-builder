@@ -42,17 +42,17 @@ const query = function( serverUrl,connection ){
  */
 const requestManager = function( serverUrl, interval, requests, updateResults ){
 
-    debugger;
     function executeRequests(){
-        debugger;
         let promises = requests.map( request =>{
             return query(serverUrl, request.connection);
         } );
 
         Promise.all( promises ).then( values =>{
+            debugger;
             console.log( 'Requests', values);
             updateResults(values[0]);
         }).catch( err =>{
+            debugger;
             console.error('Unexpected Error getting data', err);
         });
     }
