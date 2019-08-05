@@ -8,8 +8,7 @@
     "dev": "DEVELOPMENT=true webpack-dev-server --config webpack.dev.config.js --port 8081",
     "eslint": "./node_modules/.bin/eslint -c eslintrc.json ./src/**",
     "build": "node node_modules/.bin/webpack -d --config=webpack.prod.config.js",
-    "server":"node ./server/server.js"
-
+    "server": "node ./server/server.js"
   },
   "author": "Invue",
   "license": "ISC",
@@ -22,15 +21,15 @@
     "object-keys": "^1.0.11",
     "plotly.js": "^1.38.0",
     "prop-types": "^15.6.1",
-    "react": "^15.4.2",
+    "react": "16.8.6",
     "react-addons-css-transition-group": "^15.3.2",
     "react-awesome-modal": "^2.0.1",
     "react-axios": "^2.0.0",
     "react-basic-table": "^1.0.14",
-    "react-dom": "^15.4.2",
+    "react-dom": "^16.8.6",
     "react-easy-transition": "0.0.5",
     "react-flipcard": "^0.2.1",
-    "react-grid-layout": "^0.16.6",
+    "react-grid-layout": "0.16.6",
     "react-id-swiper": "^1.5.5",
     "react-modal": "^1.7.3",
     "react-plotly.js": "^2.2.0",
